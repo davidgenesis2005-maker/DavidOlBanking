@@ -2,15 +2,14 @@
 
 namespace OnlineBankingSystem
 {
-    class BankAccountSystem
+    class BankAccount
     {
-       
+    
         public string accountName;
         public string accountNumber;
         public double balance;
 
-     
-        public BankAccountSystem(string name, string number, double initialBalance)
+        public BankAccount(string name, string number, double initialBalance)
         {
             accountName = name;
             accountNumber = number;
@@ -19,12 +18,13 @@ namespace OnlineBankingSystem
 
         public void DisplayAccount()
         {
-            Console.WriteLine("\n Account Details ");
+            Console.WriteLine("\n--- Account Details ---");
             Console.WriteLine("Account Name: " + accountName);
             Console.WriteLine("Account Number: " + accountNumber);
             Console.WriteLine("Current Balance: ₱" + balance);
         }
 
+        
         public void Deposit(double amount)
         {
             if (amount > 0)
@@ -38,7 +38,7 @@ namespace OnlineBankingSystem
             }
         }
 
-       
+      
         public void Withdraw(double amount)
         {
             if (amount > 0 && amount <= balance)
@@ -52,6 +52,7 @@ namespace OnlineBankingSystem
             }
         }
 
+       
         public void SendMoney(BankAccount receiver, double amount)
         {
             if (amount > 0 && amount <= balance)
@@ -66,7 +67,7 @@ namespace OnlineBankingSystem
             }
         }
 
-    
+       
         public void ReceiveMoney(double amount)
         {
             balance += amount;
@@ -78,14 +79,14 @@ namespace OnlineBankingSystem
     {
         static void Main(string[] args)
         {
-            BankAccount user1 = new BankAccount("Gcash", "ACC1001", 10000);
-            BankAccount user2 = new BankAccount("Genesis", "ACC2002", 50000);
+            BankAccount user1 = new BankAccount("Genesis", "ACC1001", 5000);
+            BankAccount user2 = new BankAccount("David", "ACC2002", 3000);
 
             int choice = 0;
 
             while (choice != 6)
             {
-                Console.WriteLine("\n ONLINE BANKING SYSTEM ");
+                Console.WriteLine("\n===== ONLINE BANKING SYSTEM =====");
                 Console.WriteLine("1. Deposit");
                 Console.WriteLine("2. Withdraw");
                 Console.WriteLine("3. Send Money");
