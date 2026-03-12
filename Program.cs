@@ -1,86 +1,40 @@
 ﻿using System;
+using ClassLibrary2;
+using ClassLibrary1;
 
-namespace OnlineBankingSystem
+
+
+
+namespace BankApp
 {
-    class BankAccount
-    {
-    
-        public string accountName;
-        public string accountNumber;
-        public double balance;
-
-        public BankAccount(string name, string number, double initialBalance)
-        {
-            accountName = name;
-            accountNumber = number;
-            balance = initialBalance;
-        }
-
-        public void DisplayAccount()
-        {
-            Console.WriteLine("\n--- Account Details ---");
-            Console.WriteLine("Account Name: " + accountName);
-            Console.WriteLine("Account Number: " + accountNumber);
-            Console.WriteLine("Current Balance: ₱" + balance);
-        }
-
-        
-        public void Deposit(double amount)
-        {
-            if (amount > 0)
-            {
-                balance += amount;
-                Console.WriteLine("Deposit Successful!");
-            }
-            else
-            {
-                Console.WriteLine("Invalid Deposit Amount.");
-            }
-        }
-
-      
-        public void Withdraw(double amount)
-        {
-            if (amount > 0 && amount <= balance)
-            {
-                balance -= amount;
-                Console.WriteLine("Withdrawal Successful!");
-            }
-            else
-            {
-                Console.WriteLine("Invalid or Insufficient Balance.");
-            }
-        }
-
-       
-        public void SendMoney(BankAccount receiver, double amount)
-        {
-            if (amount > 0 && amount <= balance)
-            {
-                balance -= amount;
-                receiver.ReceiveMoney(amount);
-                Console.WriteLine("Money Sent Successfully!");
-            }
-            else
-            {
-                Console.WriteLine("Transaction Failed. Check Balance.");
-            }
-        }
-
-       
-        public void ReceiveMoney(double amount)
-        {
-            balance += amount;
-            Console.WriteLine("Money Received: ₱" + amount);
-        }
-    }
-
-    class Program
+    class MainProgram
     {
         static void Main(string[] args)
         {
-            BankAccount user1 = new BankAccount("Genesis", "ACC1001", 5000);
-            BankAccount user2 = new BankAccount("David", "ACC2002", 3000);
+            BankAccount genesis = new BankAccount("Genesis", "ACC1001", 10000);
+            BankAccount user123 = new BankAccount("user123", "ACC2002", 5000);
+
+            Console.WriteLine("===== WELCOME TO ONLINE BANKING =====");
+            Console.Write("Enter your account number: ");
+            string inputAcc = Console.ReadLine();
+
+            BankAccount currentUser = null;
+
+            if (inputAcc == genesis.accountNumber)
+            {
+                currentUser = genesis;
+            }
+            else if (inputAcc == user123.accountNumber)
+            {
+                currentUser = user123;
+            }
+            else
+            {
+                Console.WriteLine("Account number not found. Exiting...");
+                return;
+            }
+
+            Console.WriteLine($"Welcome, {currentUser.accountName}!");
 
             int choice = 0;
 
@@ -102,29 +56,29 @@ namespace OnlineBankingSystem
                     case 1:
                         Console.Write("Enter amount to deposit: ");
                         double dep = Convert.ToDouble(Console.ReadLine());
-                        user1.Deposit(dep);
+                        currentUser.Deposit(dep);
                         break;
 
                     case 2:
                         Console.Write("Enter amount to withdraw: ");
                         double wit = Convert.ToDouble(Console.ReadLine());
-                        user1.Withdraw(wit);
+                        currentUser.Withdraw(wit);
                         break;
 
                     case 3:
-                        Console.Write("Enter amount to send to David: ");
+                        Console.Write("Enter amount to send to user123: ");
                         double send = Convert.ToDouble(Console.ReadLine());
-                        user1.SendMoney(user2, send);
+                        currentUser.SendMoney(user123, send);
                         break;
 
                     case 4:
-                        Console.Write("Enter amount to receive from David: ");
+                        Console.Write("Enter amount to receive from David: " );
                         double receive = Convert.ToDouble(Console.ReadLine());
-                        user2.SendMoney(user1, receive);
+                        user123.SendMoney(currentUser, receive);
                         break;
 
                     case 5:
-                        user1.DisplayAccount();
+                        currentUser.DisplayAccount();
                         break;
 
                     case 6:
