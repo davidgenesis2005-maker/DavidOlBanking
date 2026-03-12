@@ -72,7 +72,7 @@ namespace BankApp
                         break;
 
                     case 4:
-                        Console.Write("Enter amount to receive from David: " );
+                        Console.Write("Enter amount to receive from David: ");
                         double receive = Convert.ToDouble(Console.ReadLine());
                         user123.SendMoney(currentUser, receive);
                         break;
