@@ -10,7 +10,7 @@ namespace BankAccount
     {
         public static bool Login(BankAccount1 user)
         {
-            Console.WriteLine("===== ONLINE BANKING LOGIN =====");
+            Console.WriteLine("===== ONLINE BANKING LOGIN ========");
             Console.Write("Enter your Account Number: ");
             string accInput = Console.ReadLine();
 
