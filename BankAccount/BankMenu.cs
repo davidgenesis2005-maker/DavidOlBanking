@@ -15,12 +15,12 @@ namespace BankAccount
             while (choice != 6)
             {
                 Console.WriteLine("\n===== ONLINE BANKING SYSTEM =====");
-                Console.WriteLine("1. Deposit");
-                Console.WriteLine("2. Withdraw");
-                Console.WriteLine("3. Send Money");
-                Console.WriteLine("4. Receive Money");
-                Console.WriteLine("5. Check Balance");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("1. Deposit ");
+                Console.WriteLine("2. Withdraw ");
+                Console.WriteLine("3. Send Money ");
+                Console.WriteLine("4. Receive Money ");
+                Console.WriteLine("5. Check Balance" );
+                Console.WriteLine("6. Exit ");
                 Console.Write("Enter choice: ");
 
                 choice = Convert.ToInt32(Console.ReadLine());
